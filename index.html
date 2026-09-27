@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,7 +40,7 @@
         nav a {
             color: white;
             text-decoration: none;
-            margin: 0 12px;
+            margin: 0 9px;
             font-weight: bold;
             transition: 0.3s;
         }
@@ -48,7 +49,7 @@
             color: #00e5ff;
         }
 
-        /* ГЛАВНЫЙ ЭКРАН */
+        /* ГЛАВНАЯ */
 
         .hero {
             min-height: 100vh;
@@ -100,7 +101,7 @@
             box-shadow: 0 0 25px rgba(0, 229, 255, 0.5);
         }
 
-        /* ОБЩИЕ СЕКЦИИ */
+        /* СЕКЦИИ */
 
         section {
             max-width: 1100px;
@@ -136,7 +137,7 @@
             border: 4px solid #00e5ff;
         }
 
-        /* КАРТОЧКИ ИГР */
+        /* ИГРЫ */
 
         .games {
             display: grid;
@@ -212,6 +213,69 @@
             line-height: 1.7;
         }
 
+        /* ОТЗЫВЫ */
+
+        .review-form {
+            max-width: 650px;
+            margin: auto;
+            background: #111625;
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid #252b45;
+            box-shadow: 0 0 25px rgba(0, 229, 255, 0.05);
+        }
+
+        .review-form input,
+        .review-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+
+            background: #080b14;
+            color: white;
+
+            border: 1px solid #252b45;
+            border-radius: 8px;
+
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+
+            transition: 0.3s;
+        }
+
+        .review-form input:focus,
+        .review-form textarea:focus {
+            outline: none;
+            border-color: #00e5ff;
+            box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+        }
+
+        .review-form textarea {
+            resize: vertical;
+        }
+
+        .review-form button {
+            width: 100%;
+            padding: 15px;
+
+            background: #00e5ff;
+            color: #080b14;
+
+            border: none;
+            border-radius: 8px;
+
+            font-size: 17px;
+            font-weight: bold;
+
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .review-form button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
+        }
+
         /* FOOTER */
 
         footer {
@@ -242,8 +306,8 @@
             }
 
             nav a {
-                margin: 0 5px;
-                font-size: 13px;
+                margin: 0 4px;
+                font-size: 12px;
             }
 
             .my-photo {
@@ -252,19 +316,24 @@
             }
         }
     </style>
+
 </head>
 
 <body>
 
+
     <!-- МЕНЮ -->
 
     <nav>
+
         <a href="#home">Главная</a>
         <a href="#about">Обо мне</a>
         <a href="#games">Игры</a>
         <a href="#roblox">Roblox</a>
         <a href="#minecraft">Minecraft</a>
         <a href="#cs2">CS2</a>
+        <a href="#reviews">Отзывы</a>
+
     </nav>
 
 
@@ -329,14 +398,11 @@
 
         <div class="games">
 
-
-            <!-- ROBLOX -->
-
             <div class="game">
 
                 <img
                     src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=800&q=80"
-                    alt="Игровая картинка"
+                    alt="Roblox"
                 >
 
                 <div class="game-content">
@@ -353,13 +419,11 @@
             </div>
 
 
-            <!-- MINECRAFT -->
-
             <div class="game">
 
                 <img
                     src="https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5?auto=format&fit=crop&w=800&q=80"
-                    alt="Игровая картинка"
+                    alt="Minecraft"
                 >
 
                 <div class="game-content">
@@ -368,19 +432,20 @@
 
                     <p>
                         Советы по выживанию,
-                        ресурсам, строительству и исследованию мира.
+                        ресурсам, строительству
+                        и исследованию мира.
                     </p>
 
                 </div>
 
             </div>
-            <!-- CS2 -->
+
 
             <div class="game">
 
                 <img
                     src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80"
-                    alt="Игровая картинка"
+                    alt="CS2"
                 >
 
                 <div class="game-content">
@@ -408,7 +473,7 @@
         <h2>🎮 Советы по Roblox</h2>
 
         <p class="intro">
-            Полезные советы для популярных режимов Roblox.
+            Полезные советы для разных режимов Roblox.
         </p>
 
 
@@ -449,6 +514,105 @@
 
         </div>
 
+
+        <div class="tip">
+
+            <h3>🥚 Укради яйцо</h3>
+
+            <p>
+                Следи за своей базой и не оставляй
+                ценные предметы без защиты.
+                Перед походом за яйцом посмотри,
+                где находятся другие игроки.
+                После этого быстро возвращайся на базу.
+            </p>
+
+        </div>
+
+
+        <div class="tip">
+
+            <h3>💰 Тайкуны</h3>
+
+            <p>
+                Сначала развивай производство и покупай
+                улучшения, которые увеличивают доход.
+                Не трать все деньги сразу — оставляй
+                запас на следующие улучшения.
+            </p>
+
+        </div>
+
+
+        <div class="tip">
+
+            <h3>🏗️ Строительные тайкуны</h3>
+
+            <p>
+                Развивай свою базу постепенно.
+                Сначала увеличивай доход, а потом
+                покупай декоративные предметы.
+                Следи за ресурсами для следующих улучшений.
+            </p>
+
+        </div>
+
+
+        <div class="tip">
+
+            <h3>⚔️ PvP-режимы</h3>
+
+            <p>
+                Не бросайся в бой без подготовки.
+                Следи за противниками, используй
+                укрытия и старайся действовать
+                вместе с другими игроками.
+            </p>
+
+        </div>
+
+
+        <div class="tip">
+
+            <h3>🏆 Режимы с заданиями</h3>
+
+            <p>
+                Сначала выполняй задания,
+                которые дают полезные награды.
+                Проверяй ежедневные задания
+                и забирай доступные бонусы.
+            </p>
+
+        </div>
+
+
+        <div class="tip">
+
+            <h3>🛡️ Безопасность аккаунта</h3>
+
+            <p>
+                Никому не сообщай пароль и коды
+                подтверждения. Не переходи
+                по подозрительным ссылкам
+                и внимательно проверяй обмены.
+            </p>
+
+        </div>
+
+
+        <div class="tip">
+
+            <h3>🎁 Бесплатные награды</h3>
+
+            <p>
+                Проверяй официальные события
+                и доступные внутриигровые задания.
+                Не верь сайтам, которые обещают
+                бесплатную валюту за ввод пароля.
+            </p>
+
+        </div>
+
     </section>
 
 
@@ -459,7 +623,8 @@
         <h2>⛏️ Советы по Minecraft</h2>
 
         <p class="intro">
-            Полезные советы для выживания и исследования мира.
+            Полезные советы для выживания
+            и исследования мира.
         </p>
 
 
@@ -494,7 +659,8 @@
 
             <p>
                 Построй укрытие в удобном месте
-                и хорошо освети территорию вокруг дома.
+                и хорошо освети территорию
+                вокруг дома.
             </p>
 
         </div>
@@ -508,6 +674,45 @@
                 Перед дальнейшим путешествием подготовь
                 еду, инструменты и достаточно места
                 для найденных предметов.
+            </p>
+
+        </div>
+
+
+        <div class="tip">
+
+            <h3>⛏️ Шахта</h3>
+
+            <p>
+                Бери с собой кирку, факелы и еду.
+                Не забывай отмечать дорогу,
+                чтобы не потеряться.
+            </p>
+
+        </div>
+
+
+        <div class="tip">
+
+            <h3>🌾 Ферма</h3>
+
+            <p>
+                Создай источник еды рядом с домом.
+                Ферма поможет не тратить время
+                на постоянный поиск еды.
+            </p>
+
+        </div>
+
+
+        <div class="tip">
+
+            <h3>🔥 Портал в Нижний мир</h3>
+
+            <p>
+                Перед путешествием подготовь
+                необходимые предметы и убедись,
+                что сможешь вернуться обратно.
             </p>
 
         </div>
@@ -561,8 +766,6 @@
             </p>
 
         </div>
-
-
         <div class="tip">
 
             <h3>🤝 Играй командой</h3>
@@ -588,6 +791,83 @@
 
         </div>
 
+
+        <div class="tip">
+
+            <h3>💨 Используй гранаты</h3>
+
+            <p>
+                Учись использовать гранаты для помощи
+                команде: закрывай обзор соперникам
+                и помогай команде занимать позиции.
+            </p>
+
+        </div>
+
+
+        <div class="tip">
+
+            <h3>📢 Передавай информацию</h3>
+
+            <p>
+                Если заметил соперника или услышал
+                важный звук, спокойно сообщи об этом
+                команде.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ОТЗЫВЫ -->
+
+    <section id="reviews">
+
+        <h2>💬 Оставить отзыв</h2>
+
+        <p class="intro">
+            Напиши, что тебе понравилось
+            на сайте или какой совет был полезен.
+        </p>
+
+
+        <div class="review-form">
+
+            <form
+                action="https://formspree.io/f/mrpboybg"
+                method="POST"
+            >
+
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Твоё имя"
+                    required
+                >
+
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Твоя почта"
+                    required
+                >
+
+                <textarea
+                    name="message"
+                    placeholder="Напиши свой отзыв..."
+                    rows="6"
+                    required
+                ></textarea>
+
+                <button type="submit">
+                    🚀 Отправить отзыв
+                </button>
+
+            </form>
+
+        </div>
+
     </section>
 
 
@@ -600,4 +880,5 @@
     </footer>
 
 </body>
+
 </html>
