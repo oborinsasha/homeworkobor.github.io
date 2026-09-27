@@ -23,14 +23,14 @@
             color: white;
         }
 
-        /* НАВИГАЦИЯ */
+        /* МЕНЮ */
 
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 18px;
-            background: rgba(8, 11, 20, 0.95);
+            padding: 18px 10px;
+            background: rgba(8, 11, 20, 0.96);
             text-align: center;
             z-index: 1000;
             border-bottom: 1px solid #252b45;
@@ -39,7 +39,7 @@
         nav a {
             color: white;
             text-decoration: none;
-            margin: 0 18px;
+            margin: 0 12px;
             font-weight: bold;
             transition: 0.3s;
         }
@@ -60,7 +60,7 @@
 
             background:
                 linear-gradient(
-                    rgba(8, 11, 20, 0.75),
+                    rgba(8, 11, 20, 0.72),
                     rgba(8, 11, 20, 0.95)
                 ),
                 url("https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1600&q=80")
@@ -68,7 +68,7 @@
         }
 
         .hero-content {
-            max-width: 800px;
+            max-width: 850px;
         }
 
         .hero h1 {
@@ -100,7 +100,7 @@
             box-shadow: 0 0 25px rgba(0, 229, 255, 0.5);
         }
 
-        /* СЕКЦИИ */
+        /* ОБЩИЕ СЕКЦИИ */
 
         section {
             max-width: 1100px;
@@ -126,7 +126,17 @@
             border: 1px solid #252b45;
         }
 
-        /* ИГРЫ */
+        .my-photo {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin: 25px auto;
+            display: block;
+            border: 4px solid #00e5ff;
+        }
+
+        /* КАРТОЧКИ ИГР */
 
         .games {
             display: grid;
@@ -171,12 +181,25 @@
 
         /* СОВЕТЫ */
 
+        .intro {
+            text-align: center;
+            color: #c7cada;
+            font-size: 18px;
+            margin-bottom: 35px;
+        }
+
         .tip {
             background: #111625;
             padding: 25px;
             margin-bottom: 20px;
             border-left: 4px solid #00e5ff;
             border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .tip:hover {
+            transform: translateX(5px);
+            background: #151b2d;
         }
 
         .tip h3 {
@@ -186,7 +209,7 @@
 
         .tip p {
             color: #d7dbea;
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
         /* FOOTER */
@@ -214,9 +237,18 @@
                 grid-template-columns: 1fr;
             }
 
+            nav {
+                padding: 14px 5px;
+            }
+
             nav a {
-                margin: 0 7px;
-                font-size: 14px;
+                margin: 0 5px;
+                font-size: 13px;
+            }
+
+            .my-photo {
+                width: 200px;
+                height: 200px;
             }
         }
     </style>
@@ -224,13 +256,15 @@
 
 <body>
 
-    <!-- НАВИГАЦИЯ -->
+    <!-- МЕНЮ -->
 
     <nav>
         <a href="#home">Главная</a>
         <a href="#about">Обо мне</a>
         <a href="#games">Игры</a>
-        <a href="#tips">Советы</a>
+        <a href="#roblox">Roblox</a>
+        <a href="#minecraft">Minecraft</a>
+        <a href="#cs2">CS2</a>
     </nav>
 
 
@@ -243,8 +277,8 @@
             <h1>🎮 Игровые советы</h1>
 
             <p>
-                Полезные советы, секреты и гайды
-                по моим любимым играм.
+                Советы, секреты и полезные гайды
+                по Roblox, Minecraft и CS2.
             </p>
 
             <a class="button" href="#games">
@@ -270,11 +304,16 @@
                 полезными советами с другими игроками.
             </p>
 
-            <br>
+            <img
+                class="my-photo"
+                src="IMG_20260927_133759.jpg"
+                alt="Моя фотография"
+            >
 
             <p>
-                Здесь я буду публиковать интересные
-                фишки, советы и гайды по играм.
+                На этом сайте я собираю советы,
+                интересные фишки и полезные гайды
+                по моим любимым играм.
             </p>
 
         </div>
@@ -291,53 +330,66 @@
         <div class="games">
 
 
+            <!-- ROBLOX -->
+
             <div class="game">
 
-                <img src="https://images.unsplash.com/photo-1607513746994-51f730a44832?auto=format&fit=crop&w=800&q=80">
+                <img
+                    src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=800&q=80"
+                    alt="Игровая картинка"
+                >
 
                 <div class="game-content">
 
-                    <h3>Minecraft</h3>
+                    <h3>🎮 Roblox</h3>
+
+                    <p>
+                        Советы по популярным режимам,
+                        игровым механикам и безопасности.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- MINECRAFT -->
+
+            <div class="game">
+
+                <img
+                    src="https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5?auto=format&fit=crop&w=800&q=80"
+                    alt="Игровая картинка"
+                >
+
+                <div class="game-content">
+
+                    <h3>⛏️ Minecraft</h3>
 
                     <p>
                         Советы по выживанию,
-                        строительству и поиску ресурсов.
+                        ресурсам, строительству и исследованию мира.
                     </p>
 
                 </div>
 
             </div>
-
-
-            <div class="game">
-
-                <img src="https://images.unsplash.com/photo-1560253023-3ec5d502959f?auto=format&fit=crop&w=800&q=80">
-
-                <div class="game-content">
-
-                    <h3>Игры</h3>
-
-                    <p>
-                        Полезные советы и интересные
-                        игровые фишки.
-                    </p>
-
-                </div>
-
-            </div>
-
+            <!-- CS2 -->
 
             <div class="game">
 
-                <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=800&q=80">
+                <img
+                    src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80"
+                    alt="Игровая картинка"
+                >
 
                 <div class="game-content">
 
-                    <h3>Мои игры</h3>
+                    <h3>🎯 CS2</h3>
 
                     <p>
-                        Здесь будут появляться новые
-                        игры и гайды.
+                        Советы по командной игре,
+                        картам, экономике и тренировкам.
                     </p>
 
                 </div>
@@ -349,21 +401,25 @@
     </section>
 
 
-    <!-- СОВЕТЫ -->
+    <!-- ROBLOX -->
 
-    <section id="tips">
+    <section id="roblox">
 
-        <h2>💡 Полезные советы</h2>
+        <h2>🎮 Советы по Roblox</h2>
+
+        <p class="intro">
+            Полезные советы для популярных режимов Roblox.
+        </p>
 
 
         <div class="tip">
 
-            <h3>⛏️ Minecraft</h3>
+            <h3>⚔️ BedWars</h3>
 
             <p>
-                В начале игры сначала собери дерево,
-                сделай инструменты и найди безопасное
-                место для ночлега.
+                Следи за своей кроватью, собирай ресурсы
+                и взаимодействуй с командой.
+                Старайся не атаковать без плана.
             </p>
 
         </div>
@@ -371,13 +427,11 @@
 
         <div class="tip">
 
-            <h3>🎮 Совет игрокам</h3>
+            <h3>🏡 Brookhaven</h3>
 
             <p>
-                Не бойся экспериментировать и
-                изучать игровые механики.
-                Иногда самый простой способ оказывается
-                самым эффективным.
+                Исследуй карту, находи интересные места
+                и используй транспорт для перемещения.
             </p>
 
         </div>
@@ -385,11 +439,12 @@
 
         <div class="tip">
 
-            <h3>🔥 Новый гайд скоро</h3>
+            <h3>🐾 Adopt Me!</h3>
 
             <p>
-                Здесь будут появляться новые советы
-                по играм.
+                Заботься о питомцах и внимательно
+                проверяй обмены перед подтверждением.
+                Никому не сообщай пароль от аккаунта.
             </p>
 
         </div>
@@ -397,7 +452,146 @@
     </section>
 
 
-    <!-- НИЖНЯЯ ЧАСТЬ -->
+    <!-- MINECRAFT -->
+
+    <section id="minecraft">
+
+        <h2>⛏️ Советы по Minecraft</h2>
+
+        <p class="intro">
+            Полезные советы для выживания и исследования мира.
+        </p>
+
+
+        <div class="tip">
+
+            <h3>🌲 Первый день</h3>
+
+            <p>
+                Собери дерево, сделай основные инструменты,
+                найди еду и подготовь безопасное место
+                для ночлега.
+            </p>
+
+        </div>
+
+
+        <div class="tip">
+
+            <h3>💎 Ресурсы</h3>
+
+            <p>
+                Бери с собой инструменты, факелы и еду.
+                Ценные ресурсы храни в безопасном месте.
+            </p>
+
+        </div>
+
+
+        <div class="tip">
+
+            <h3>🏠 Дом</h3>
+
+            <p>
+                Построй укрытие в удобном месте
+                и хорошо освети территорию вокруг дома.
+            </p>
+
+        </div>
+
+
+        <div class="tip">
+
+            <h3>🧭 Исследование</h3>
+
+            <p>
+                Перед дальнейшим путешествием подготовь
+                еду, инструменты и достаточно места
+                для найденных предметов.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- CS2 -->
+
+    <section id="cs2">
+
+        <h2>🎯 Советы по CS2</h2>
+
+        <p class="intro">
+            Советы для тренировок и командной игры.
+        </p>
+
+
+        <div class="tip">
+
+            <h3>🎯 Тренируй прицел</h3>
+
+            <p>
+                Регулярные короткие тренировки помогают
+                привыкнуть к движению и управлению оружием.
+            </p>
+
+        </div>
+
+
+        <div class="tip">
+
+            <h3>💰 Экономика</h3>
+
+            <p>
+                Следи за деньгами команды и обсуждай
+                покупки с товарищами по команде.
+            </p>
+
+        </div>
+
+
+        <div class="tip">
+
+            <h3>🗺️ Изучай карты</h3>
+
+            <p>
+                Запоминай основные позиции, маршруты
+                и места, где команда может встретиться
+                с противниками.
+            </p>
+
+        </div>
+
+
+        <div class="tip">
+
+            <h3>🤝 Играй командой</h3>
+
+            <p>
+                Сообщай команде важную информацию,
+                слушай товарищей и старайся действовать
+                вместе.
+            </p>
+
+        </div>
+
+
+        <div class="tip">
+
+            <h3>🧠 Не спеши</h3>
+
+            <p>
+                Не обязательно постоянно идти вперёд.
+                Иногда лучше остановиться, получить
+                информацию и только потом действовать.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ПОДВАЛ -->
 
     <footer>
 
