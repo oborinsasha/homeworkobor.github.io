@@ -1,0 +1,181 @@
+index.html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Мой сайт</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: white;
+            background: #111827;
+        }
+
+        /* МЕНЮ */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #60a5fa;
+            transform: scale(1.1);
+        }
+
+        /* ГЛАВНЫЙ ЭКРАН */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+
+            background:
+                linear-gradient(
+                    rgba(0, 0, 0, 0.5),
+                    rgba(0, 0, 0, 0.7)
+                ),
+                url("https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=2000&q=80");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            margin-bottom: 20px;
+            animation: appear 1.5s ease;
+        }
+
+        .hero p {
+            font-size: 22px;
+            max-width: 600px;
+            margin-bottom: 30px;
+            animation: appear 2s ease;
+        }
+
+        /* КНОПКА */
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 30px;
+            background: #3b82f6;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            transform: scale(1.08);
+            background: #2563eb;
+            box-shadow: 0 0 25px rgba(59, 130, 246, 0.7);
+        }
+
+        /* СЕКЦИИ */
+        section {
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        #about {
+            background: #1f2937;
+        }
+
+        #projects {
+            background: #111827;
+        }
+
+        section h2 {
+            font-size: 40px;
+            margin-bottom: 40px;
+        }
+
+        /* КАРТОЧКИ */
+        .cards {
+            max-width: 1000px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(250px, 1fr));
+
+            gap: 25px;
+        }
+
+        .card {
+            background: #374151;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #d1d5db;
+        }
+
+        /* АНИМАЦИЯ */
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ТЕЛЕФОН */
+        @media (max-width: 600px) {
+            .hero h1 {
