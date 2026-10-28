@@ -794,4 +794,169 @@
             <h3>🤝 Играй командой</h3>
             <p>
                 Сообщай команде важную информацию,
-                слушай товарищей и старайся действоват
+                слушай товарищей и старайся действовать вместе.
+            </p>
+        </div>
+
+        <div class="tip">
+            <h3>🧠 Не спеши</h3>
+            <p>
+                Не обязательно постоянно идти вперёд.
+                Иногда лучше остановиться, получить
+                информацию и только потом действовать.
+            </p>
+        </div>
+
+        <div class="tip">
+            <h3>💨 Используй гранаты</h3>
+            <p>
+                Учись использовать гранаты для помощи
+                команде: закрывай обзор соперникам
+                и помогай команде занимать позиции.
+            </p>
+        </div>
+
+        <div class="tip">
+            <h3>📢 Передавай информацию</h3>
+            <p>
+                Если заметил соперника или услышал
+                важный звук, спокойно сообщи об этом
+                команде.
+            </p>
+        </div>
+
+    </section>
+
+
+    <!-- ОТЗЫВЫ -->
+
+    <section id="reviews">
+
+        <h2>💬 Оставить отзыв</h2>
+
+        <p class="intro">
+            Напиши, что тебе понравилось
+            на сайте или какой совет был полезен.
+        </p>
+
+        <div class="review-form">
+
+            <form
+                action="https://formspree.io/f/mrpboybg"
+                method="POST"
+            >
+
+                <input type="hidden" name="_next" value="https://ваш-сайт.ru/#reviews">
+                <input type="hidden" name="_subject" value="Новый отзыв с сайта «Игровые советы»">
+                <input type="hidden" name="_language" value="ru">
+
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Твоё имя"
+                    required
+                >
+
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Твоя почта"
+                    required
+                >
+
+                <textarea
+                    name="message"
+                    placeholder="Напиши свой отзыв..."
+                    rows="6"
+                    minlength="10"
+                    maxlength="500"
+                    required
+                ></textarea>
+
+                <button type="submit">
+                    🚀 Отправить отзыв
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- ПОДВАЛ -->
+
+    <footer>
+
+        © 2026 Игровые советы от Саши 🎮
+
+    </footer>
+
+
+    <!-- КНОПКА НАВЕРХ -->
+
+    <a href="#home" class="to-top" id="toTop" aria-label="Наверх">↑</a>
+
+
+    <script>
+        /* ПОИСК ПО СОВЕТАМ */
+        const search = document.getElementById('search');
+        const tipsList = document.getElementById('tips-list');
+        const noResults = document.getElementById('no-results');
+
+        if (search && tipsList) {
+            search.addEventListener('input', function () {
+                const q = this.value.trim().toLowerCase();
+                const tips = tipsList.querySelectorAll('.tip');
+                let visible = 0;
+
+                tips.forEach(tip => {
+                    const match = tip.textContent.toLowerCase().includes(q);
+                    tip.style.display = match ? '' : 'none';
+                    if (match) visible++;
+                });
+
+                noResults.style.display = visible === 0 ? 'block' : 'none';
+            });
+        }
+
+        /* ПОДСВЕТКА МЕНЮ */
+        const navLinks = document.querySelectorAll('nav a');
+        const sections = document.querySelectorAll('section[id]');
+
+        function updateActiveMenu() {
+            let currentId = '';
+            sections.forEach(section => {
+                if (window.scrollY >= section.offsetTop - 120) {
+                    currentId = section.id;
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.style.color =
+                    link.getAttribute('href') === '#' + currentId
+                        ? '#00e5ff'
+                        : '';
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveMenu);
+        updateActiveMenu();
+
+        /* КНОПКА "НАВЕРХ" */
+        const toTop = document.getElementById('toTop');
+
+        function toggleToTop() {
+            if (window.scrollY > 500) {
+                toTop.classList.add('show');
+            } else {
+                toTop.classList.remove('show');
+            }
+        }
+
+        window.addEventListener('scroll', toggleToTop);
+        toggleToTop();
+    </script>
+
+</body>
+</html>
