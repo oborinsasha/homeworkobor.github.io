@@ -6,6 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Игровые советы от Саши</title>
+    <meta name="description" content="Игровые советы по Roblox, Minecraft и CS2: гайды, секреты, фишки и безопасность аккаунта.">
+    <meta name="keywords" content="Roblox, Minecraft, CS2, игровые советы, гайды, BedWars, тайкуны">
+    <meta name="author" content="Саша">
+    <meta property="og:title" content="Игровые советы от Саши">
+    <meta property="og:description" content="Советы и гайды по Roblox, Minecraft и CS2.">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
 
     <style>
         * {
@@ -19,7 +26,7 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Roboto, Arial, sans-serif;
             background: #080b14;
             color: white;
         }
@@ -35,6 +42,7 @@
             text-align: center;
             z-index: 1000;
             border-bottom: 1px solid #252b45;
+            backdrop-filter: blur(6px);
         }
 
         nav a {
@@ -42,7 +50,7 @@
             text-decoration: none;
             margin: 0 9px;
             font-weight: bold;
-            transition: 0.3s;
+            transition: color 0.3s;
         }
 
         nav a:hover {
@@ -53,6 +61,7 @@
 
         .hero {
             min-height: 100vh;
+            min-height: 100dvh;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -93,7 +102,7 @@
             text-decoration: none;
             font-weight: bold;
             border-radius: 8px;
-            transition: 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .button:hover {
@@ -150,7 +159,7 @@
             border-radius: 15px;
             overflow: hidden;
             border: 1px solid #252b45;
-            transition: 0.3s;
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
         }
 
         .game:hover {
@@ -189,13 +198,38 @@
             margin-bottom: 35px;
         }
 
+        /* Поиск */
+
+        .search-wrap {
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        #search {
+            width: 100%;
+            padding: 14px 18px;
+            background: #111625;
+            color: white;
+            border: 1px solid #252b45;
+            border-radius: 10px;
+            font-size: 16px;
+            font-family: inherit;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        #search:focus {
+            outline: none;
+            border-color: #00e5ff;
+            box-shadow: 0 0 12px rgba(0, 229, 255, 0.25);
+        }
+
         .tip {
             background: #111625;
             padding: 25px;
             margin-bottom: 20px;
             border-left: 4px solid #00e5ff;
             border-radius: 8px;
-            transition: 0.3s;
+            transition: transform 0.3s, background 0.3s;
         }
 
         .tip:hover {
@@ -211,6 +245,14 @@
         .tip p {
             color: #d7dbea;
             line-height: 1.7;
+        }
+
+        .no-results {
+            text-align: center;
+            color: #8991a8;
+            padding: 30px;
+            font-size: 17px;
+            display: none;
         }
 
         /* ОТЗЫВЫ */
@@ -230,17 +272,13 @@
             width: 100%;
             padding: 15px;
             margin-bottom: 15px;
-
             background: #080b14;
             color: white;
-
             border: 1px solid #252b45;
             border-radius: 8px;
-
             font-size: 16px;
-            font-family: Arial, sans-serif;
-
-            transition: 0.3s;
+            font-family: inherit;
+            transition: border-color 0.3s, box-shadow 0.3s;
         }
 
         .review-form input:focus,
@@ -257,23 +295,55 @@
         .review-form button {
             width: 100%;
             padding: 15px;
-
             background: #00e5ff;
             color: #080b14;
-
             border: none;
             border-radius: 8px;
-
             font-size: 17px;
             font-weight: bold;
-
+            font-family: inherit;
             cursor: pointer;
-            transition: 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .review-form button:hover {
             transform: scale(1.02);
             box-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
+        }
+
+        /* КНОПКА НАВЕРХ */
+
+        .to-top {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 50px;
+            height: 50px;
+            background: #00e5ff;
+            color: #080b14;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(15px);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        .to-top.show {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        .to-top:hover {
+            transform: translateY(-4px);
         }
 
         /* FOOTER */
@@ -283,6 +353,19 @@
             padding: 35px;
             background: #05070d;
             color: #8991a8;
+        }
+
+        /* АНИМАЦИЯ ПОЯВЛЕНИЯ */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* ТЕЛЕФОН */
@@ -302,17 +385,35 @@
             }
 
             nav {
-                padding: 14px 5px;
+                display: flex;
+                justify-content: flex-start;
+                overflow-x: auto;
+                gap: 14px;
+                padding: 14px 14px;
+                scrollbar-width: none;
+            }
+
+            nav::-webkit-scrollbar {
+                display: none;
             }
 
             nav a {
-                margin: 0 4px;
-                font-size: 12px;
+                margin: 0;
+                font-size: 13px;
+                white-space: nowrap;
             }
 
             .my-photo {
                 width: 200px;
                 height: 200px;
+            }
+
+            section {
+                padding: 80px 15px;
+            }
+
+            h2 {
+                font-size: 30px;
             }
         }
     </style>
@@ -321,10 +422,9 @@
 
 <body>
 
-
     <!-- МЕНЮ -->
 
-    <nav>
+    <nav id="nav">
 
         <a href="#home">Главная</a>
         <a href="#about">Обо мне</a>
@@ -376,6 +476,7 @@
             <img
                 class="my-photo"
                 src="IMG_20260927_133759.jpg"
+                onerror="this.src='https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=400&q=80'"
                 alt="Моя фотография"
             >
 
@@ -398,11 +499,12 @@
 
         <div class="games">
 
-            <div class="game">
+            <div class="game reveal">
 
                 <img
                     src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=800&q=80"
                     alt="Roblox"
+                    loading="lazy"
                 >
 
                 <div class="game-content">
@@ -419,11 +521,12 @@
             </div>
 
 
-            <div class="game">
+            <div class="game reveal">
 
                 <img
                     src="https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5?auto=format&fit=crop&w=800&q=80"
                     alt="Minecraft"
+                    loading="lazy"
                 >
 
                 <div class="game-content">
@@ -441,11 +544,12 @@
             </div>
 
 
-            <div class="game">
+            <div class="game reveal">
 
                 <img
                     src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80"
                     alt="CS2"
+                    loading="lazy"
                 >
 
                 <div class="game-content">
@@ -476,142 +580,114 @@
             Полезные советы для разных режимов Roblox.
         </p>
 
+        <div class="search-wrap">
+            <input type="text" id="search" placeholder="🔍 Найти совет...">
+        </div>
 
-        <div class="tip">
+        <div class="tips-list" id="tips-list">
 
-            <h3>⚔️ BedWars</h3>
+            <div class="tip reveal">
+                <h3>⚔️ BedWars</h3>
+                <p>
+                    Следи за своей кроватью, собирай ресурсы
+                    и взаимодействуй с командой.
+                    Старайся не атаковать без плана.
+                </p>
+            </div>
 
-            <p>
-                Следи за своей кроватью, собирай ресурсы
-                и взаимодействуй с командой.
-                Старайся не атаковать без плана.
-            </p>
+            <div class="tip reveal">
+                <h3>🏡 Brookhaven</h3>
+                <p>
+                    Исследуй карту, находи интересные места
+                    и используй транспорт для перемещения.
+                </p>
+            </div>
+
+            <div class="tip reveal">
+                <h3>🐾 Adopt Me!</h3>
+                <p>
+                    Заботься о питомцах и внимательно
+                    проверяй обмены перед подтверждением.
+                    Никому не сообщай пароль от аккаунта.
+                </p>
+            </div>
+
+            <div class="tip reveal">
+                <h3>🥚 Укради яйцо</h3>
+                <p>
+                    Следи за своей базой и не оставляй
+                    ценные предметы без защиты.
+                    Перед походом за яйцом посмотри,
+                    где находятся другие игроки.
+                    После этого быстро возвращайся на базу.
+                </p>
+            </div>
+
+            <div class="tip reveal">
+                <h3>💰 Тайкуны</h3>
+                <p>
+                    Сначала развивай производство и покупай
+                    улучшения, которые увеличивают доход.
+                    Не трать все деньги сразу — оставляй
+                    запас на следующие улучшения.
+                </p>
+            </div>
+
+            <div class="tip reveal">
+                <h3>🏗️ Строительные тайкуны</h3>
+                <p>
+                    Развивай свою базу постепенно.
+                    Сначала увеличивай доход, а потом
+                    покупай декоративные предметы.
+                    Следи за ресурсами для следующих улучшений.
+                </p>
+            </div>
+
+            <div class="tip reveal">
+                <h3>⚔️ PvP-режимы</h3>
+                <p>
+                    Не бросайся в бой без подготовки.
+                    Следи за противниками, используй
+                    укрытия и старайся действовать
+                    вместе с другими игроками.
+                </p>
+            </div>
+
+            <div class="tip reveal">
+                <h3>🏆 Режимы с заданиями</h3>
+                <p>
+                    Сначала выполняй задания,
+                    которые дают полезные награды.
+                    Проверяй ежедневные задания
+                    и забирай доступные бонусы.
+                </p>
+            </div>
+
+            <div class="tip reveal">
+                <h3>🛡️ Безопасность аккаунта</h3>
+                <p>
+                    Никому не сообщай пароль и коды
+                    подтверждения. Не переходи
+                    по подозрительным ссылкам
+                    и внимательно проверяй обмены.
+                </p>
+            </div>
+
+            <div class="tip reveal">
+                <h3>🎁 Бесплатные награды</h3>
+                <p>
+                    Проверяй официальные события
+                    и доступные внутриигровые задания.
+                    Не верь сайтам, которые обещают
+                    бесплатную валюту за ввод пароля.
+                </p>
+            </div>
 
         </div>
 
-
-        <div class="tip">
-
-            <h3>🏡 Brookhaven</h3>
-
-            <p>
-                Исследуй карту, находи интересные места
-                и используй транспорт для перемещения.
-            </p>
-
-        </div>
-
-
-        <div class="tip">
-
-            <h3>🐾 Adopt Me!</h3>
-
-            <p>
-                Заботься о питомцах и внимательно
-                проверяй обмены перед подтверждением.
-                Никому не сообщай пароль от аккаунта.
-            </p>
-
-        </div>
-
-
-        <div class="tip">
-
-            <h3>🥚 Укради яйцо</h3>
-
-            <p>
-                Следи за своей базой и не оставляй
-                ценные предметы без защиты.
-                Перед походом за яйцом посмотри,
-                где находятся другие игроки.
-                После этого быстро возвращайся на базу.
-            </p>
-
-        </div>
-
-
-        <div class="tip">
-
-            <h3>💰 Тайкуны</h3>
-
-            <p>
-                Сначала развивай производство и покупай
-                улучшения, которые увеличивают доход.
-                Не трать все деньги сразу — оставляй
-                запас на следующие улучшения.
-            </p>
-
-        </div>
-
-
-        <div class="tip">
-
-            <h3>🏗️ Строительные тайкуны</h3>
-
-            <p>
-                Развивай свою базу постепенно.
-                Сначала увеличивай доход, а потом
-                покупай декоративные предметы.
-                Следи за ресурсами для следующих улучшений.
-            </p>
-
-        </div>
-
-
-        <div class="tip">
-
-            <h3>⚔️ PvP-режимы</h3>
-
-            <p>
-                Не бросайся в бой без подготовки.
-                Следи за противниками, используй
-                укрытия и старайся действовать
-                вместе с другими игроками.
-            </p>
-
-        </div>
-
-
-        <div class="tip">
-
-            <h3>🏆 Режимы с заданиями</h3>
-
-            <p>
-                Сначала выполняй задания,
-                которые дают полезные награды.
-                Проверяй ежедневные задания
-                и забирай доступные бонусы.
-            </p>
-
-        </div>
-
-
-        <div class="tip">
-
-            <h3>🛡️ Безопасность аккаунта</h3>
-
-            <p>
-                Никому не сообщай пароль и коды
-                подтверждения. Не переходи
-                по подозрительным ссылкам
-                и внимательно проверяй обмены.
-            </p>
-
-        </div>
-
-
-        <div class="tip">
-
-            <h3>🎁 Бесплатные награды</h3>
-
-            <p>
-                Проверяй официальные события
-                и доступные внутриигровые задания.
-                Не верь сайтам, которые обещают
-                бесплатную валюту за ввод пароля.
-            </p>
-
-        </div>
+        <p class="no-results" id="no-results">
+            😕 Ничего не найдено. Попробуй другой запрос.
+        </p>
 
     </section>
 
@@ -627,94 +703,66 @@
             и исследования мира.
         </p>
 
-
-        <div class="tip">
-
+        <div class="tip reveal">
             <h3>🌲 Первый день</h3>
-
             <p>
                 Собери дерево, сделай основные инструменты,
                 найди еду и подготовь безопасное место
                 для ночлега.
             </p>
-
         </div>
 
-
-        <div class="tip">
-
+        <div class="tip reveal">
             <h3>💎 Ресурсы</h3>
-
             <p>
                 Бери с собой инструменты, факелы и еду.
                 Ценные ресурсы храни в безопасном месте.
             </p>
-
         </div>
 
-
-        <div class="tip">
-
+        <div class="tip reveal">
             <h3>🏠 Дом</h3>
-
             <p>
                 Построй укрытие в удобном месте
                 и хорошо освети территорию
                 вокруг дома.
             </p>
-
         </div>
 
-
-        <div class="tip">
-
+        <div class="tip reveal">
             <h3>🧭 Исследование</h3>
-
             <p>
                 Перед дальнейшим путешествием подготовь
                 еду, инструменты и достаточно места
                 для найденных предметов.
             </p>
-
         </div>
 
-
-        <div class="tip">
-
+        <div class="tip reveal">
             <h3>⛏️ Шахта</h3>
-
             <p>
                 Бери с собой кирку, факелы и еду.
                 Не забывай отмечать дорогу,
                 чтобы не потеряться.
             </p>
-
         </div>
 
-
-        <div class="tip">
-
+        <div class="tip reveal">
             <h3>🌾 Ферма</h3>
-
             <p>
                 Создай источник еды рядом с домом.
                 Ферма поможет не тратить время
                 на постоянный поиск еды.
             </p>
-
         </div>
 
-
-        <div class="tip">
-
+        <div class="tip reveal">
             <h3>🔥 Портал в Нижний мир</h3>
-
             <p>
                 Перед путешествием подготовь
                 необходимые предметы и убедись,
                 что сможешь вернуться обратно.
             </p>
-
         </div>
 
     </section>
@@ -730,155 +778,18 @@
             Советы для тренировок и командной игры.
         </p>
 
-
-        <div class="tip">
-
+        <div class="tip reveal">
             <h3>🎯 Тренируй прицел</h3>
-
             <p>
                 Регулярные короткие тренировки помогают
                 привыкнуть к движению и управлению оружием.
             </p>
-
         </div>
 
-
-        <div class="tip">
-
+        <div class="tip reveal">
             <h3>💰 Экономика</h3>
-
             <p>
                 Следи за деньгами команды и обсуждай
                 покупки с товарищами по команде.
             </p>
-
-        </div>
-
-
-        <div class="tip">
-
-            <h3>🗺️ Изучай карты</h3>
-
-            <p>
-                Запоминай основные позиции, маршруты
-                и места, где команда может встретиться
-                с противниками.
-            </p>
-
-        </div>
-        <div class="tip">
-
-            <h3>🤝 Играй командой</h3>
-
-            <p>
-                Сообщай команде важную информацию,
-                слушай товарищей и старайся действовать
-                вместе.
-            </p>
-
-        </div>
-
-
-        <div class="tip">
-
-            <h3>🧠 Не спеши</h3>
-
-            <p>
-                Не обязательно постоянно идти вперёд.
-                Иногда лучше остановиться, получить
-                информацию и только потом действовать.
-            </p>
-
-        </div>
-
-
-        <div class="tip">
-
-            <h3>💨 Используй гранаты</h3>
-
-            <p>
-                Учись использовать гранаты для помощи
-                команде: закрывай обзор соперникам
-                и помогай команде занимать позиции.
-            </p>
-
-        </div>
-
-
-        <div class="tip">
-
-            <h3>📢 Передавай информацию</h3>
-
-            <p>
-                Если заметил соперника или услышал
-                важный звук, спокойно сообщи об этом
-                команде.
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <!-- ОТЗЫВЫ -->
-
-    <section id="reviews">
-
-        <h2>💬 Оставить отзыв</h2>
-
-        <p class="intro">
-            Напиши, что тебе понравилось
-            на сайте или какой совет был полезен.
-        </p>
-
-
-        <div class="review-form">
-
-            <form
-                action="https://formspree.io/f/mrpboybg"
-                method="POST"
-            >
-
-                <input
-                    type="text"
-                    name="name"
-                    placeholder="Твоё имя"
-                    required
-                >
-
-                <input
-                    type="email"
-                    name="email"
-                    placeholder="Твоя почта"
-                    required
-                >
-
-                <textarea
-                    name="message"
-                    placeholder="Напиши свой отзыв..."
-                    rows="6"
-                    required
-                ></textarea>
-
-                <button type="submit">
-                    🚀 Отправить отзыв
-                </button>
-
-            </form>
-
-        </div>
-
-    </section>
-
-
-    <!-- ПОДВАЛ -->
-
-    <footer>
-
-        © 2026 Игровые советы от Саши 🎮
-
-    </footer>
-
-</body>
-
-</html>
+        </
