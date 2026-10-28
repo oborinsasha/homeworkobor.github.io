@@ -1,418 +1,121 @@
+
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Игровые советы от Саши</title>
     <meta name="description" content="Игровые советы по Roblox, Minecraft и CS2: гайды, секреты, фишки и безопасность аккаунта.">
-    <meta name="keywords" content="Roblox, Minecraft, CS2, игровые советы, гайды, BedWars, тайкуны">
-    <meta name="author" content="Саша">
-    <meta property="og:title" content="Игровые советы от Саши">
-    <meta property="og:description" content="Советы и гайды по Roblox, Minecraft и CS2.">
-    <meta property="og:type" content="website">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
-
+    
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Segoe UI', Roboto, Arial, sans-serif;
-            background: #080b14;
-            color: white;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Segoe UI', Roboto, Arial, sans-serif; background: #080b14; color: white; transition: background 0.3s, color 0.3s; }
 
         /* МЕНЮ */
+        nav { position: fixed; top: 0; width: 100%; padding: 18px 10px; background: rgba(8, 11, 20, 0.96); text-align: center; z-index: 1000; border-bottom: 1px solid #252b45; backdrop-filter: blur(6px); }
+        nav a { color: white; text-decoration: none; margin: 0 9px; font-weight: bold; transition: color 0.3s; }
+        nav a:hover { color: #00e5ff; }
 
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 18px 10px;
-            background: rgba(8, 11, 20, 0.96);
-            text-align: center;
-            z-index: 1000;
-            border-bottom: 1px solid #252b45;
-            backdrop-filter: blur(6px);
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 9px;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: #00e5ff;
-        }
+        /* КНОПКИ УПРАВЛЕНИЯ */
+        .theme-btn { position: fixed; top: 12px; left: 15px; font-size: 20px; background: #111625; border: 1px solid #252b45; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 1001; transition: transform 0.3s; color: white; }
+        .theme-btn:hover { transform: scale(1.1); }
+        .menu-toggle { display: none; position: fixed; top: 12px; right: 15px; font-size: 26px; color: #00e5ff; cursor: pointer; z-index: 1001; background: none; border: none; }
 
         /* ГЛАВНАЯ */
-
-        .hero {
-            min-height: 100vh;
-            min-height: 100dvh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 100px 20px 50px;
-
-            background:
-                linear-gradient(
-                    rgba(8, 11, 20, 0.72),
-                    rgba(8, 11, 20, 0.95)
-                ),
-                url("https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1600&q=80")
-                center / cover;
-        }
-
-        .hero-content {
-            max-width: 850px;
-        }
-
-        .hero h1 {
-            font-size: 60px;
-            margin-bottom: 20px;
-            color: #00e5ff;
-            text-shadow: 0 0 20px rgba(0, 229, 255, 0.5);
-        }
-
-        .hero p {
-            font-size: 22px;
-            color: #d7dbea;
-            margin-bottom: 35px;
-        }
-
-        .button {
-            display: inline-block;
-            padding: 15px 30px;
-            background: #00e5ff;
-            color: #080b14;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 8px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 25px rgba(0, 229, 255, 0.5);
-        }
+        .hero { min-height: 100vh; min-height: 100dvh; display: flex; justify-content: center; align-items: center; text-align: center; padding: 100px 20px 50px; background: linear-gradient(rgba(8, 11, 20, 0.72), rgba(8, 11, 20, 0.95)), url("https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1600&q=80") center / cover; }
+        .hero-content { max-width: 850px; }
+        .hero h1 { font-size: 60px; margin-bottom: 20px; color: #00e5ff; text-shadow: 0 0 20px rgba(0, 229, 255, 0.5); }
+        .hero p { font-size: 22px; color: #d7dbea; margin-bottom: 35px; }
+        .button { display: inline-block; padding: 15px 30px; background: #00e5ff; color: #080b14; text-decoration: none; font-weight: bold; border-radius: 8px; transition: transform 0.3s, box-shadow 0.3s; }
+        .button:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(0, 229, 255, 0.5); }
 
         /* СЕКЦИИ */
-
-        section {
-            max-width: 1100px;
-            margin: auto;
-            padding: 100px 20px;
-        }
-
-        h2 {
-            font-size: 38px;
-            margin-bottom: 40px;
-            color: #00e5ff;
-            text-align: center;
-        }
+        section { max-width: 1100px; margin: auto; padding: 100px 20px; }
+        h2 { font-size: 38px; margin-bottom: 40px; color: #00e5ff; text-align: center; }
 
         /* ОБО МНЕ */
-
-        .about {
-            background: #111625;
-            padding: 30px;
-            border-radius: 15px;
-            line-height: 1.8;
-            text-align: center;
-            border: 1px solid #252b45;
-        }
-
-        .my-photo {
-            width: 250px;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 50%;
-            margin: 25px auto;
-            display: block;
-            border: 4px solid #00e5ff;
-        }
+        .about { background: #111625; padding: 30px; border-radius: 15px; line-height: 1.8; text-align: center; border: 1px solid #252b45; transition: 0.3s; }
+        .my-photo { width: 250px; height: 250px; object-fit: cover; border-radius: 50%; margin: 25px auto; display: block; border: 4px solid #00e5ff; }
 
         /* ИГРЫ */
-
-        .games {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-
-        .game {
-            background: #111625;
-            border-radius: 15px;
-            overflow: hidden;
-            border: 1px solid #252b45;
-            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
-        }
-
-        .game:hover {
-            transform: translateY(-8px);
-            border-color: #00e5ff;
-            box-shadow: 0 0 25px rgba(0, 229, 255, 0.15);
-        }
-
-        .game img {
-            width: 100%;
-            height: 190px;
-            object-fit: cover;
-        }
-
-        .game-content {
-            padding: 20px;
-        }
-
-        .game h3 {
-            color: #00e5ff;
-            margin-bottom: 10px;
-            font-size: 24px;
-        }
-
-        .game p {
-            color: #c7cada;
-            line-height: 1.6;
-        }
+        .games { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+        .game { background: #111625; border-radius: 15px; overflow: hidden; border: 1px solid #252b45; transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s, background 0.3s; }
+        .game:hover { transform: translateY(-8px); border-color: #00e5ff; box-shadow: 0 0 25px rgba(0, 229, 255, 0.15); }
+        .game img { width: 100%; height: 190px; object-fit: cover; }
+        .game-content { padding: 20px; }
+        .game h3 { color: #00e5ff; margin-bottom: 10px; font-size: 24px; }
+        .game p { color: #c7cada; line-height: 1.6; }
 
         /* СОВЕТЫ */
+        .intro { text-align: center; color: #c7cada; font-size: 18px; margin-bottom: 35px; }
+        .search-wrap { display: flex; gap: 10px; max-width: 600px; margin: 0 auto 30px; }
+        #search { flex-grow: 1; padding: 14px 18px; background: #111625; color: white; border: 1px solid #252b45; border-radius: 10px; font-size: 16px; font-family: inherit; transition: 0.3s; }
+        #search:focus { outline: none; border-color: #00e5ff; box-shadow: 0 0 12px rgba(0, 229, 255, 0.25); }
+        #search-btn { padding: 0 20px; background: #00e5ff; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; transition: 0.3s; color: #080b14; }
+        #search-btn:hover { box-shadow: 0 0 15px rgba(0, 229, 255, 0.5); }
 
-        .intro {
-            text-align: center;
-            color: #c7cada;
-            font-size: 18px;
-            margin-bottom: 35px;
-        }
+        .tip { background: #111625; padding: 25px; margin-bottom: 20px; border-left: 4px solid #00e5ff; border-radius: 8px; transition: transform 0.3s, background 0.3s; }
+        .tip:hover { transform: translateX(5px); background: #151b2d; }
+        .tip h3 { color: #00e5ff; margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between; }
+        .tip p { color: #d7dbea; line-height: 1.7; }
+        .no-results { text-align: center; color: #8991a8; padding: 30px; font-size: 17px; display: none; }
 
-        /* Поиск */
-
-        .search-wrap {
-            max-width: 600px;
-            margin: 0 auto 30px;
-        }
-
-        #search {
-            width: 100%;
-            padding: 14px 18px;
-            background: #111625;
-            color: white;
-            border: 1px solid #252b45;
-            border-radius: 10px;
-            font-size: 16px;
-            font-family: inherit;
-            transition: border-color 0.3s, box-shadow 0.3s;
-        }
-
-        #search:focus {
-            outline: none;
-            border-color: #00e5ff;
-            box-shadow: 0 0 12px rgba(0, 229, 255, 0.25);
-        }
-
-        .tip {
-            background: #111625;
-            padding: 25px;
-            margin-bottom: 20px;
-            border-left: 4px solid #00e5ff;
-            border-radius: 8px;
-            transition: transform 0.3s, background 0.3s;
-        }
-
-        .tip:hover {
-            transform: translateX(5px);
-            background: #151b2d;
-        }
-
-        .tip h3 {
-            color: #00e5ff;
-            margin-bottom: 10px;
-        }
-
-        .tip p {
-            color: #d7dbea;
-            line-height: 1.7;
-        }
-
-        .no-results {
-            text-align: center;
-            color: #8991a8;
-            padding: 30px;
-            font-size: 17px;
-            display: none;
-        }
+        /* ИЗБРАННОЕ */
+        .fav-btn { background: none; border: none; color: #8991a8; font-size: 24px; cursor: pointer; transition: transform 0.2s, color 0.2s; padding-left: 10px; }
+        .fav-btn:hover { transform: scale(1.2); }
+        .fav-btn.active { color: #ffd700; text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
 
         /* ОТЗЫВЫ */
-
-        .review-form {
-            max-width: 650px;
-            margin: auto;
-            background: #111625;
-            padding: 30px;
-            border-radius: 15px;
-            border: 1px solid #252b45;
-            box-shadow: 0 0 25px rgba(0, 229, 255, 0.05);
-        }
-
-        .review-form input,
-        .review-form textarea {
-            width: 100%;
-            padding: 15px;
-            margin-bottom: 15px;
-            background: #080b14;
-            color: white;
-            border: 1px solid #252b45;
-            border-radius: 8px;
-            font-size: 16px;
-            font-family: inherit;
-            transition: border-color 0.3s, box-shadow 0.3s;
-        }
-
-        .review-form input:focus,
-        .review-form textarea:focus {
-            outline: none;
-            border-color: #00e5ff;
-            box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
-        }
-
-        .review-form textarea {
-            resize: vertical;
-        }
-
-        .review-form button {
-            width: 100%;
-            padding: 15px;
-            background: #00e5ff;
-            color: #080b14;
-            border: none;
-            border-radius: 8px;
-            font-size: 17px;
-            font-weight: bold;
-            font-family: inherit;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .review-form button:hover {
-            transform: scale(1.02);
-            box-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
-        }
+        .review-form { max-width: 650px; margin: auto; background: #111625; padding: 30px; border-radius: 15px; border: 1px solid #252b45; transition: 0.3s; }
+        .review-form input, .review-form textarea { width: 100%; padding: 15px; margin-bottom: 15px; background: #080b14; color: white; border: 1px solid #252b45; border-radius: 8px; font-size: 16px; font-family: inherit; transition: 0.3s; }
+        .review-form input:focus, .review-form textarea:focus { outline: none; border-color: #00e5ff; }
+        .review-form button { width: 100%; padding: 15px; background: #00e5ff; color: #080b14; border: none; border-radius: 8px; font-size: 17px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .review-form button:hover { transform: scale(1.02); }
 
         /* КНОПКА НАВЕРХ */
+        .to-top { position: fixed; bottom: 25px; right: 25px; width: 50px; height: 50px; background: #00e5ff; color: #080b14; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: bold; text-decoration: none; box-shadow: 0 0 20px rgba(0, 229, 255, 0.4); z-index: 999; opacity: 0; pointer-events: none; transform: translateY(15px); transition: 0.3s; }
+        .to-top.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
 
-        .to-top {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            width: 50px;
-            height: 50px;
-            background: #00e5ff;
-            color: #080b14;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            font-weight: bold;
-            text-decoration: none;
-            box-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
-            z-index: 999;
-            opacity: 0;
-            pointer-events: none;
-            transform: translateY(15px);
-            transition: opacity 0.3s, transform 0.3s;
-        }
+        footer { text-align: center; padding: 35px; background: #05070d; color: #8991a8; transition: 0.3s; }
 
-        .to-top.show {
-            opacity: 1;
-            pointer-events: auto;
-            transform: translateY(0);
-        }
-
-        .to-top:hover {
-            transform: translateY(-4px);
-        }
-
-        /* FOOTER */
-
-        footer {
-            text-align: center;
-            padding: 35px;
-            background: #05070d;
-            color: #8991a8;
-        }
+        /* СВЕТЛАЯ ТЕМА */
+        body.light-theme { background: #f4f6fb; color: #1a1a1a; }
+        body.light-theme nav { background: rgba(244, 246, 251, 0.96); border-bottom: 1px solid #ccd3e0; }
+        body.light-theme nav a, body.light-theme .theme-btn { color: #1a1a1a; }
+        body.light-theme .theme-btn { background: #fff; border-color: #ccd3e0; }
+        body.light-theme .about, body.light-theme .game, body.light-theme .tip, body.light-theme .review-form, body.light-theme #search, body.light-theme .review-form input, body.light-theme .review-form textarea { background: #fff; border-color: #ccd3e0; color: #1a1a1a; }
+        body.light-theme .about p, body.light-theme .game p, body.light-theme .tip p, body.light-theme .intro { color: #444; }
+        body.light-theme .game:hover, body.light-theme .tip:hover { background: #f8faff; border-color: #00e5ff; }
+        body.light-theme footer { background: #e2e6f0; color: #555; }
 
         /* ТЕЛЕФОН */
-
         @media (max-width: 800px) {
-
-            .hero h1 {
-                font-size: 42px;
-            }
-
-            .hero p {
-                font-size: 18px;
-            }
-
-            .games {
-                grid-template-columns: 1fr;
-            }
-
-            nav {
-                display: flex;
-                justify-content: flex-start;
-                overflow-x: auto;
-                gap: 14px;
-                padding: 14px 14px;
-                scrollbar-width: none;
-            }
-
-            nav::-webkit-scrollbar {
-                display: none;
-            }
-
-            nav a {
-                margin: 0;
-                font-size: 13px;
-                white-space: nowrap;
-            }
-
-            .my-photo {
-                width: 200px;
-                height: 200px;
-            }
-
-            section {
-                padding: 80px 15px;
-            }
-
-            h2 {
-                font-size: 30px;
-            }
+            .hero h1 { font-size: 42px; }
+            .hero p { font-size: 18px; }
+            .games { grid-template-columns: 1fr; }
+            .my-photo { width: 200px; height: 200px; }
+            section { padding: 80px 15px; }
+            h2 { font-size: 30px; }
+            
+            /* Бургер-меню */
+            .menu-toggle { display: block; }
+            nav { display: none; flex-direction: column; position: fixed; top: 60px; left: 0; width: 100%; background: rgba(8, 11, 20, 0.98); padding: 20px; text-align: center; gap: 15px; border-bottom: 1px solid #252b45; }
+            body.light-theme nav { background: rgba(244, 246, 251, 0.98); }
+            nav.active { display: flex; }
+            nav a { margin: 0; font-size: 16px; padding: 5px 0; }
         }
     </style>
-
 </head>
-
 <body>
 
+    <!-- КНОПКИ УПРАВЛЕНИЯ -->
+    <button class="theme-btn" id="themeBtn" aria-label="Сменить тему">🌙</button>
+    <button class="menu-toggle" id="menuToggle" aria-label="Меню">☰</button>
+
     <!-- МЕНЮ -->
-
     <nav id="nav">
-
         <a href="#home">Главная</a>
         <a href="#about">Обо мне</a>
         <a href="#games">Игры</a>
@@ -420,543 +123,195 @@
         <a href="#minecraft">Minecraft</a>
         <a href="#cs2">CS2</a>
         <a href="#reviews">Отзывы</a>
-
     </nav>
 
-
     <!-- ГЛАВНАЯ -->
-
     <section class="hero" id="home">
-
         <div class="hero-content">
-
             <h1>🎮 Игровые советы</h1>
-
-            <p>
-                Советы, секреты и полезные гайды
-                по Roblox, Minecraft и CS2.
-            </p>
-
-            <a class="button" href="#games">
-                Смотреть игры
-            </a>
-
+            <p>Советы, секреты и полезные гайды по Roblox, Minecraft и CS2.</p>
+            <a class="button" href="#games">Смотреть игры</a>
         </div>
-
     </section>
-
 
     <!-- ОБО МНЕ -->
-
     <section id="about">
-
         <h2>👤 Обо мне</h2>
-
         <div class="about">
-
-            <p>
-                Привет! Меня зовут Саша.
-                Я люблю видеоигры и хочу делиться
-                полезными советами с другими игроками.
-            </p>
-
-            <img
-                class="my-photo"
-                src="IMG_20260927_133759.jpg"
-                onerror="this.src='https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=400&q=80'"
-                alt="Моя фотография"
-            >
-
-            <p>
-                На этом сайте я собираю советы,
-                интересные фишки и полезные гайды
-                по моим любимым играм.
-            </p>
-
+            <p>Привет! Меня зовут Саша. Я люблю видеоигры и хочу делиться полезными советами с другими игроками.</p>
+            <img class="my-photo" src="IMG_20260927_133759.jpg" onerror="this.src='https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=400&q=80'" alt="Моя фотография">
+            <p>На этом сайте я собираю советы, интересные фишки и полезные гайды по моим любимым играм.</p>
         </div>
-
     </section>
-
 
     <!-- ИГРЫ -->
-
     <section id="games">
-
         <h2>🎮 Игры</h2>
-
         <div class="games">
-
             <div class="game">
-
-                <img
-                    src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=800&q=80"
-                    alt="Roblox"
-                    loading="lazy"
-                >
-
+                <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=800&q=80" alt="Roblox" loading="lazy">
                 <div class="game-content">
-
                     <h3>🎮 Roblox</h3>
-
-                    <p>
-                        Советы по популярным режимам,
-                        игровым механикам и безопасности.
-                    </p>
-
+                    <p>Советы по популярным режимам, игровым механикам и безопасности.</p>
                 </div>
-
             </div>
-
-
             <div class="game">
-
-                <img
-                    src="https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5?auto=format&fit=crop&w=800&q=80"
-                    alt="Minecraft"
-                    loading="lazy"
-                >
-
+                <img src="https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5?auto=format&fit=crop&w=800&q=80" alt="Minecraft" loading="lazy">
                 <div class="game-content">
-
                     <h3>⛏️ Minecraft</h3>
-
-                    <p>
-                        Советы по выживанию,
-                        ресурсам, строительству
-                        и исследованию мира.
-                    </p>
-
+                    <p>Советы по выживанию, ресурсам, строительству и исследованию мира.</p>
                 </div>
-
             </div>
-
-
             <div class="game">
-
-                <img
-                    src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80"
-                    alt="CS2"
-                    loading="lazy"
-                >
-
+                <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80" alt="CS2" loading="lazy">
                 <div class="game-content">
-
                     <h3>🎯 CS2</h3>
-
-                    <p>
-                        Советы по командной игре,
-                        картам, экономике и тренировкам.
-                    </p>
-
+                    <p>Советы по командной игре, картам, экономике и тренировкам.</p>
                 </div>
-
             </div>
-
         </div>
-
     </section>
-
 
     <!-- ROBLOX -->
-
     <section id="roblox">
-
         <h2>🎮 Советы по Roblox</h2>
-
-        <p class="intro">
-            Полезные советы для разных режимов Roblox.
-        </p>
-
+        <p class="intro">Полезные советы для разных режимов Roblox.</p>
         <div class="search-wrap">
-            <input type="text" id="search" placeholder="🔍 Найти совет...">
+            <input type="text" id="search" placeholder="🔍 Глобальный поиск по всем советам...">
+            <button id="search-btn">Найти</button>
         </div>
-
         <div class="tips-list" id="tips-list">
-
-            <div class="tip">
-                <h3>⚔️ BedWars</h3>
-                <p>
-                    Следи за своей кроватью, собирай ресурсы
-                    и взаимодействуй с командой.
-                    Старайся не атаковать без плана.
-                </p>
-            </div>
-
-            <div class="tip">
-                <h3>🏡 Brookhaven</h3>
-                <p>
-                    Исследуй карту, находи интересные места
-                    и используй транспорт для перемещения.
-                </p>
-            </div>
-
-            <div class="tip">
-                <h3>🐾 Adopt Me!</h3>
-                <p>
-                    Заботься о питомцах и внимательно
-                    проверяй обмены перед подтверждением.
-                    Никому не сообщай пароль от аккаунта.
-                </p>
-            </div>
-
-            <div class="tip">
-                <h3>🥚 Укради яйцо</h3>
-                <p>
-                    Следи за своей базой и не оставляй
-                    ценные предметы без защиты.
-                    Перед походом за яйцом посмотри,
-                    где находятся другие игроки.
-                    После этого быстро возвращайся на базу.
-                </p>
-            </div>
-
-            <div class="tip">
-                <h3>💰 Тайкуны</h3>
-                <p>
-                    Сначала развивай производство и покупай
-                    улучшения, которые увеличивают доход.
-                    Не трать все деньги сразу — оставляй
-                    запас на следующие улучшения.
-                </p>
-            </div>
-
-            <div class="tip">
-                <h3>🏗️ Строительные тайкуны</h3>
-                <p>
-                    Развивай свою базу постепенно.
-                    Сначала увеличивай доход, а потом
-                    покупай декоративные предметы.
-                    Следи за ресурсами для следующих улучшений.
-                </p>
-            </div>
-
-            <div class="tip">
-                <h3>⚔️ PvP-режимы</h3>
-                <p>
-                    Не бросайся в бой без подготовки.
-                    Следи за противниками, используй
-                    укрытия и старайся действовать
-                    вместе с другими игроками.
-                </p>
-            </div>
-
-            <div class="tip">
-                <h3>🏆 Режимы с заданиями</h3>
-                <p>
-                    Сначала выполняй задания,
-                    которые дают полезные награды.
-                    Проверяй ежедневные задания
-                    и забирай доступные бонусы.
-                </p>
-            </div>
-
-            <div class="tip">
-                <h3>🛡️ Безопасность аккаунта</h3>
-                <p>
-                    Никому не сообщай пароль и коды
-                    подтверждения. Не переходи
-                    по подозрительным ссылкам
-                    и внимательно проверяй обмены.
-                </p>
-            </div>
-
-            <div class="tip">
-                <h3>🎁 Бесплатные награды</h3>
-                <p>
-                    Проверяй официальные события
-                    и доступные внутриигровые задания.
-                    Не верь сайтам, которые обещают
-                    бесплатную валюту за ввод пароля.
-                </p>
-            </div>
-
+            <div class="tip"><h3>⚔️ BedWars</h3><p>Следи за своей кроватью, собирай ресурсы и взаимодействуй с командой. Старайся не атаковать без плана.</p></div>
+            <div class="tip"><h3>🏡 Brookhaven</h3><p>Исследуй карту, находи интересные места и используй транспорт для перемещения.</p></div>
+            <div class="tip"><h3>🐾 Adopt Me!</h3><p>Заботься о питомцах и внимательно проверяй обмены перед подтверждением. Никому не сообщай пароль от аккаунта.</p></div>
+            <div class="tip"><h3>🥚 Укради яйцо</h3><p>Следи за своей базой и не оставляй ценные предметы без защиты. Перед походом за яйцом посмотри, где находятся другие игроки. После этого быстро возвращайся на базу.</p></div>
+            <div class="tip"><h3>💰 Тайкуны</h3><p>Сначала развивай производство и покупай улучшения, которые увеличивают доход. Не трать все деньги сразу — оставляй запас на следующие улучшения.</p></div>
+            <div class="tip"><h3>🏗️ Строительные тайкуны</h3><p>Развивай свою базу постепенно. Сначала увеличивай доход, а потом покупай декоративные предметы. Следи за ресурсами для следующих улучшений.</p></div>
+            <div class="tip"><h3>⚔️ PvP-режимы</h3><p>Не бросайся в бой без подготовки. Следи за противниками, используй укрытия и старайся действовать вместе с другими игроками.</p></div>
+            <div class="tip"><h3>🏆 Режимы с заданиями</h3><p>Сначала выполняй задания, которые дают полезные награды. Проверяй ежедневные задания и забирай доступные бонусы.</p></div>
+            <div class="tip"><h3>🛡️ Безопасность аккаунта</h3><p>Никому не сообщай пароль и коды подтверждения. Не переходи по подозрительным ссылкам и внимательно проверяй обмены.</p></div>
+            <div class="tip"><h3>🎁 Бесплатные награды</h3><p>Проверяй официальные события и доступные внутриигровые задания. Не верь сайтам, которые обещают бесплатную валюту за ввод пароля.</p></div>
         </div>
-
-        <p class="no-results" id="no-results">
-            😕 Ничего не найдено. Попробуй другой запрос.
-        </p>
-
     </section>
-
 
     <!-- MINECRAFT -->
-
     <section id="minecraft">
-
         <h2>⛏️ Советы по Minecraft</h2>
-
-        <p class="intro">
-            Полезные советы для выживания
-            и исследования мира.
-        </p>
-
-        <div class="tip">
-            <h3>🌲 Первый день</h3>
-            <p>
-                Собери дерево, сделай основные инструменты,
-                найди еду и подготовь безопасное место
-                для ночлега.
-            </p>
-        </div>
-
-        <div class="tip">
-            <h3>💎 Ресурсы</h3>
-            <p>
-                Бери с собой инструменты, факелы и еду.
-                Ценные ресурсы храни в безопасном месте.
-            </p>
-        </div>
-
-        <div class="tip">
-            <h3>🏠 Дом</h3>
-            <p>
-                Построй укрытие в удобном месте
-                и хорошо освети территорию
-                вокруг дома.
-            </p>
-        </div>
-
-        <div class="tip">
-            <h3>🧭 Исследование</h3>
-            <p>
-                Перед дальнейшим путешествием подготовь
-                еду, инструменты и достаточно места
-                для найденных предметов.
-            </p>
-        </div>
-
-        <div class="tip">
-            <h3>⛏️ Шахта</h3>
-            <p>
-                Бери с собой кирку, факелы и еду.
-                Не забывай отмечать дорогу,
-                чтобы не потеряться.
-            </p>
-        </div>
-
-        <div class="tip">
-            <h3>🌾 Ферма</h3>
-            <p>
-                Создай источник еды рядом с домом.
-                Ферма поможет не тратить время
-                на постоянный поиск еды.
-            </p>
-        </div>
-
-        <div class="tip">
-            <h3>🔥 Портал в Нижний мир</h3>
-            <p>
-                Перед путешествием подготовь
-                необходимые предметы и убедись,
-                что сможешь вернуться обратно.
-            </p>
-        </div>
-
+        <p class="intro">Полезные советы для выживания и исследования мира.</p>
+        <div class="tip"><h3>🌲 Первый день</h3><p>Собери дерево, сделай основные инструменты, найди еду и подготовь безопасное место для ночлега.</p></div>
+        <div class="tip"><h3>💎 Ресурсы</h3><p>Бери с собой инструменты, факелы и еду. Ценные ресурсы храни в безопасном месте.</p></div>
+        <div class="tip"><h3>🏠 Дом</h3><p>Построй укрытие в удобном месте и хорошо освети территорию вокруг дома.</p></div>
+        <div class="tip"><h3>🧭 Исследование</h3><p>Перед дальнейшим путешествием подготовь еду, инструменты и достаточно места для найденных предметов.</p></div>
+        <div class="tip"><h3>⛏️ Шахта</h3><p>Бери с собой кирку, факелы и еду. Не забывай отмечать дорогу, чтобы не потеряться.</p></div>
+        <div class="tip"><h3>🌾 Ферма</h3><p>Создай источник еды рядом с домом. Ферма поможет не тратить время на постоянный поиск еды.</p></div>
+        <div class="tip"><h3>🔥 Портал в Нижний мир</h3><p>Перед путешествием подготовь необходимые предметы и убедись, что сможешь вернуться обратно.</p></div>
     </section>
-
 
     <!-- CS2 -->
-
     <section id="cs2">
-
         <h2>🎯 Советы по CS2</h2>
-
-        <p class="intro">
-            Советы для тренировок и командной игры.
-        </p>
-
-        <div class="tip">
-            <h3>🎯 Тренируй прицел</h3>
-            <p>
-                Регулярные короткие тренировки помогают
-                привыкнуть к движению и управлению оружием.
-            </p>
-        </div>
-
-        <div class="tip">
-            <h3>💰 Экономика</h3>
-            <p>
-                Следи за деньгами команды и обсуждай
-                покупки с товарищами по команде.
-            </p>
-        </div>
-
-        <div class="tip">
-            <h3>🗺️ Изучай карты</h3>
-            <p>
-                Запоминай основные позиции, маршруты
-                и места, где команда может встретиться
-                с противниками.
-            </p>
-        </div>
-
-        <div class="tip">
-            <h3>🤝 Играй командой</h3>
-            <p>
-                Сообщай команде важную информацию,
-                слушай товарищей и старайся действовать вместе.
-            </p>
-        </div>
-
-        <div class="tip">
-            <h3>🧠 Не спеши</h3>
-            <p>
-                Не обязательно постоянно идти вперёд.
-                Иногда лучше остановиться, получить
-                информацию и только потом действовать.
-            </p>
-        </div>
-
-        <div class="tip">
-            <h3>💨 Используй гранаты</h3>
-            <p>
-                Учись использовать гранаты для помощи
-                команде: закрывай обзор соперникам
-                и помогай команде занимать позиции.
-            </p>
-        </div>
-
-        <div class="tip">
-            <h3>📢 Передавай информацию</h3>
-            <p>
-                Если заметил соперника или услышал
-                важный звук, спокойно сообщи об этом
-                команде.
-            </p>
-        </div>
-
+        <p class="intro">Советы для тренировок и командной игры.</p>
+        <div class="tip"><h3>🎯 Тренируй прицел</h3><p>Регулярные короткие тренировки помогают привыкнуть к движению и управлению оружием.</p></div>
+        <div class="tip"><h3>💰 Экономика</h3><p>Следи за деньгами команды и обсуждай покупки с товарищами по команде.</p></div>
+        <div class="tip"><h3>🗺️ Изучай карты</h3><p>Запоминай основные позиции, маршруты и места, где команда может встретиться с противниками.</p></div>
+        <div class="tip"><h3>🤝 Играй командой</h3><p>Сообщай команде важную информацию, слушай товарищей и старайся действовать вместе.</p></div>
+        <div class="tip"><h3>🧠 Не спеши</h3><p>Не обязательно постоянно идти вперёд. Иногда лучше остановиться, получить информацию и только потом действовать.</p></div>
+        <div class="tip"><h3>💨 Используй гранаты</h3><p>Учись использовать гранаты для помощи команде: закрывай обзор соперникам и помогай команде занимать позиции.</p></div>
+        <div class="tip"><h3>📢 Передавай информацию</h3><p>Если заметил соперника или услышал важный звук, спокойно сообщи об этом команде.</p></div>
     </section>
 
-
     <!-- ОТЗЫВЫ -->
-
     <section id="reviews">
-
         <h2>💬 Оставить отзыв</h2>
-
-        <p class="intro">
-            Напиши, что тебе понравилось
-            на сайте или какой совет был полезен.
-        </p>
-
+        <p class="intro">Напиши, что тебе понравилось на сайте или какой совет был полезен.</p>
         <div class="review-form">
-
-            <form
-                action="https://formspree.io/f/mrpboybg"
-                method="POST"
-            >
-
+            <form action="https://formspree.io/f/mrpboybg" method="POST">
                 <input type="hidden" name="_next" value="https://ваш-сайт.ru/#reviews">
                 <input type="hidden" name="_subject" value="Новый отзыв с сайта «Игровые советы»">
                 <input type="hidden" name="_language" value="ru">
-
-                <input
-                    type="text"
-                    name="name"
-                    placeholder="Твоё имя"
-                    required
-                >
-
-                <input
-                    type="email"
-                    name="email"
-                    placeholder="Твоя почта"
-                    required
-                >
-
-                <textarea
-                    name="message"
-                    placeholder="Напиши свой отзыв..."
-                    rows="6"
-                    minlength="10"
-                    maxlength="500"
-                    required
-                ></textarea>
-
-                <button type="submit">
-                    🚀 Отправить отзыв
-                </button>
-
+                <input type="text" name="name" placeholder="Твоё имя" required>
+                <input type="email" name="email" placeholder="Твоя почта" required>
+                <textarea name="message" placeholder="Напиши свой отзыв..." rows="6" minlength="10" maxlength="500" required></textarea>
+                <button type="submit">🚀 Отправить отзыв</button>
             </form>
-
         </div>
-
     </section>
 
-
     <!-- ПОДВАЛ -->
-
-    <footer>
-
-        © 2026 Игровые советы от Саши 🎮
-
-    </footer>
-
+    <footer>© 2026 Игровые советы от Саши 🎮</footer>
 
     <!-- КНОПКА НАВЕРХ -->
-
     <a href="#home" class="to-top" id="toTop" aria-label="Наверх">↑</a>
 
-
+    <!-- СКРИПТЫ -->
     <script>
-        /* ПОИСК ПО СОВЕТАМ */
-        const search = document.getElementById('search');
-        const tipsList = document.getElementById('tips-list');
-        const noResults = document.getElementById('no-results');
-
-        if (search && tipsList) {
-            search.addEventListener('input', function () {
-                const q = this.value.trim().toLowerCase();
-                const tips = tipsList.querySelectorAll('.tip');
-                let visible = 0;
-
-                tips.forEach(tip => {
-                    const match = tip.textContent.toLowerCase().includes(q);
-                    tip.style.display = match ? '' : 'none';
-                    if (match) visible++;
-                });
-
-                noResults.style.display = visible === 0 ? 'block' : 'none';
+        // 1. БУРГЕР-МЕНЮ
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('nav');
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            menuToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+        });
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                menuToggle.textContent = '☰';
             });
+        });
+
+        // 2. ТЕМА
+        const themeBtn = document.getElementById('themeBtn');
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'light') {
+            document.body.classList.add('light-theme');
+            themeBtn.textContent = '☀️';
         }
-
-        /* ПОДСВЕТКА МЕНЮ */
-        const navLinks = document.querySelectorAll('nav a');
-        const sections = document.querySelectorAll('section[id]');
-
-        function updateActiveMenu() {
-            let currentId = '';
-            sections.forEach(section => {
-                if (window.scrollY >= section.offsetTop - 120) {
-                    currentId = section.id;
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.style.color =
-                    link.getAttribute('href') === '#' + currentId
-                        ? '#00e5ff'
-                        : '';
-            });
-        }
-
-        window.addEventListener('scroll', updateActiveMenu);
-        updateActiveMenu();
-
-        /* КНОПКА "НАВЕРХ" */
-        const toTop = document.getElementById('toTop');
-
-        function toggleToTop() {
-            if (window.scrollY > 500) {
-                toTop.classList.add('show');
+        themeBtn.addEventListener('click', () => {
+            document.body.classList.toggle('light-theme');
+            if (document.body.classList.contains('light-theme')) {
+                themeBtn.textContent = '☀️';
+                localStorage.setItem('theme', 'light');
             } else {
-                toTop.classList.remove('show');
+                themeBtn.textContent = '🌙';
+                localStorage.setItem('theme', 'dark');
             }
-        }
+        });
 
-        window.addEventListener('scroll', toggleToTop);
-        toggleToTop();
-    </script>
+        // 3. АВТОМАТИЧЕСКИЕ ЗВЕЗДОЧКИ И ИЗБРАННОЕ
+        document.querySelectorAll('.tip').forEach((tip, index) => {
+            const h3 = tip.querySelector('h3');
+            if (h3) {
+                const btn = document.createElement('button');
+                btn.className = 'fav-btn';
+                btn.setAttribute('data-id', 'tip-' + index);
+                btn.textContent = '☆';
+                h3.appendChild(btn);
+            }
+        });
 
-</body>
-</html>
+        const favBtns = document.querySelectorAll('.fav-btn');
+        let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        
+        favBtns.forEach(btn => {
+            const id = btn.getAttribute('data-id');
+            if (favorites.includes(id)) {
+                btn.classList.add('active');
+                btn.textContent = '★';
+            }
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (favorites.includes(id)) {
+                    favorites = favorites.filter(favId => favId !== id);
+                    btn.classList.remove('active');
+                    btn.textContent = '☆';
+                } else {
+                    favorites.push(id);
+                    btn.classList.add('active');
+                    btn.textContent = '★';
+                }
+                localStorage.setItem('favorites', JSON.stringify(favorites));
+            });
+        });
+
+        // 4. ГЛОБАЛЬНЫЙ ПОИСК
+        const searchInput = doc
