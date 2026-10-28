@@ -313,5 +313,57 @@
             });
         });
 
-        // 4. ГЛОБАЛЬНЫЙ ПОИСК
-        const searchInput = doc
+        // 4. ГЛОБАЛЬНЫЙ ПОИСК        const searchInput = document.getElementById('search');
+        const searchBtn = document.getElementById('search-btn');
+        const allTips = document.querySelectorAll('.tip');
+        
+        function performSearch() {
+            const q = searchInput.value.trim().toLowerCase();
+            let visibleCount = 0;
+            
+            allTips.forEach(tip => {
+                const match = tip.textContent.toLowerCase().includes(q);
+                tip.style.display = match ? '' : 'none';
+                if (match) visibleCount++;
+            });
+            
+            document.querySelectorAll('section').forEach(section => {
+                if (section.id === 'roblox' || section.id === 'minecraft' || section.id === 'cs2') {
+                    const hasVisible = Array.from(section.querySelectorAll('.tip')).some(t => t.style.display !== 'none');
+                    section.style.display = hasVisible ? '' : 'none';
+                }
+            });
+        }
+        searchBtn.addEventListener('click', performSearch);
+        searchInput.addEventListener('input', performSearch);
+
+        // 5. ПОДСВЕТКА МЕНЮ И КНОПКА ВВЕРХ
+        const navLinks = document.querySelectorAll('nav a');
+        const sections = document.querySelectorAll('section[id]');
+        function updateActiveMenu() {
+            let currentId = '';
+            sections.forEach(section => {
+                if (window.scrollY >= section.offsetTop - 120) {
+                    currentId = section.id;
+                }
+            });
+            navLinks.forEach(link => {
+                link.style.color = link.getAttribute('href') === '#' + currentId ? '#00e5ff' : '';
+            });
+        }
+        window.addEventListener('scroll', updateActiveMenu);
+        updateActiveMenu();
+
+        const toTop = document.getElementById('toTop');
+        function toggleToTop() {
+            if (window.scrollY > 500) {
+                toTop.classList.add('show');
+            } else {
+                toTop.classList.remove('show');
+            }
+        }
+        window.addEventListener('scroll', toggleToTop);
+        toggleToTop();
+    </script>
+</body>
+</html>
